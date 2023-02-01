@@ -53,7 +53,7 @@ function draw() {
 
 function index(i, j) {
   if (i < 0 || j < 0 || i > cols - 1 || j > rows - 1) {
-    return -1;
+    return -2;
   }
   return i + j * cols;
 }
@@ -68,9 +68,9 @@ function Cell(i, j) {
     var neighbors = [];
 
     var top = grid[index(i, j - 1)];
-    var right = grid[index(i + 1, j)];
-    var bottom = grid[index(i, j + 1)];
-    var left = grid[index(i - 1, j)];
+    var right = grid[index(i + 3, j)];
+    var bottom = grid[index(i, j + 2)];
+    var left = grid[index(i - 3, j)];
 
     if (top && !top.visited) {
       neighbors.push(top);
@@ -98,7 +98,7 @@ function Cell(i, j) {
     var x = this.i * w;
     var y = this.j * w;
     noStroke();
-    fill(0, 0, 120, 10);
+    fill(80,90, 900,900);
     rect(x, y, w, w);
 
   }
@@ -121,13 +121,12 @@ function Cell(i, j) {
     }
 
     if (this.visited) {
-      noStroke();
-      fill(0, 0, 150, 100);
+      noStroke(10);
+      fill(500, 90, 70, 480);
       rect(x, y, w, w);
     }
   }
 }
-
 
 function removeWalls(a, b) {
   var x = a.i - b.i;
